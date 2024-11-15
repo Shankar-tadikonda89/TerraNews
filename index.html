@@ -1,0 +1,32 @@
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - TerraNews</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to TerraNews</h1>
+        <p>Please sign in to view the latest news.</p>
+        
+        <!-- Google Sign-In -->
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    </div>
+
+    <script>
+        function onSignIn(googleUser) {
+            // Store token in session storage for authentication
+            const id_token = googleUser.getAuthResponse().id_token;
+            sessionStorage.setItem("token", id_token);
+            
+            // Redirect to the news page
+            window.location.href = "main.html";
+        }
+    </script>
+</body>
+</html>

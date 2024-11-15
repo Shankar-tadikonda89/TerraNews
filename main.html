@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerraNews - Latest News</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Latest News</h1>
+        <button onclick="signOut()">Sign Out</button>
+
+        <div id="news-section">
+            <!-- News Categories -->
+            <h2>News by Category</h2>
+            <div>
+                <button onclick="getCategoryNews('sports')">Sports</button>
+                <button onclick="getCategoryNews('entertainment')">Entertainment</button>
+                <button onclick="getCategoryNews('technology')">Technology</button>
+                <button onclick="getCategoryNews('business')">Business</button>
+                <button onclick="getCategoryNews('health')">Health</button>
+            </div>
+
+            <!-- Display category-based news -->
+            <div id="category-news"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
