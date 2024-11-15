@@ -3,7 +3,7 @@ function checkAuth() {
     const token = sessionStorage.getItem("token");
     if (!token) {
         alert("Please log in first!");
-        window.location.href = "login.html";
+        window.location.href = "index.html";
     }
 }
 
@@ -47,5 +47,5 @@ function displayNews(articles, elementId) {
 function signOut() {
     sessionStorage.removeItem("token");
     alert("You have been signed out.");
-    window.location.href = "login.html";
+    window.location.href = "index.html";
 }
