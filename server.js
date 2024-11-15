@@ -61,8 +61,8 @@ app.get('/auth/callback', async (req, res) => {
 app.get('/fetch-news', async (req, res) => {
     const { latitude, longitude, category } = req.query;
 
-    // Example Gemini API URL
-    const geminiApiUrl = `https://api.gemini.com/v1/news`;
+    // Example Gemini API URL (with API key)
+    const geminiApiUrl = `https://gemini.googleapis.com/v1/news`;
 
     try {
         const response = await axios.get(geminiApiUrl, {
@@ -70,7 +70,8 @@ app.get('/fetch-news', async (req, res) => {
                 latitude,
                 longitude,
                 category,
-                message: "120 words each" // Add the extra message here
+                message: "120 words each", // Add the extra message here
+                key: process.env.GEMINI_API_KEY // API key for Gemini
             }
         });
 
