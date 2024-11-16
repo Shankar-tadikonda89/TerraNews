@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3000;
 // OAuth Configuration
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
-const REDIRECT_URI = 'http://localhost:3000/auth/callback'; // Make sure this is registered in Google Cloud Console
+const REDIRECT_URI = 'http://localhost:3000/auth/callback';
 
 const oauth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
 
@@ -68,22 +68,20 @@ app.get('/auth/callback', async (req, res) => {
 app.get('/fetch-news', async (req, res) => {
     const { latitude, longitude, category } = req.query;
 
-    // Example Gemini API URL (ensure this URL is correct, based on your actual Gemini API)
-    const geminiApiUrl = `https://gemini.googleapis.com/v1/news`; // Replace with actual Gemini API endpoint
+    const geminiApiUrl = `https://gemini.googleapis.com/v1/news`;
 
     try {
-        // Make the API request to Gemini, including the required params
         const response = await axios.get(geminiApiUrl, {
             params: {
-                latitude,          // user's latitude
-                longitude,         // user's longitude
-                category,          // category of news like sports, entertainment, etc.
-                message: "120 words each", // Extra message as part of the query
-                key: process.env.GEMINI_API_KEY // API key for Gemini
+                latitude,
+                longitude,
+                category,
+                message: "120 words each", // Extra message
+                key: process.env.GEMINI_API_KEY
             }
         });
 
-        res.json(response.data); // Return the fetched news as a JSON response
+        res.json(response.data);
     } catch (error) {
         console.error('Error fetching news:', error);
         res.status(500).send('Failed to fetch news.');
